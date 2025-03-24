@@ -46,7 +46,7 @@
                 },
                 init: function () {
                     var myDropzone = this;
-                    
+
                     this.on("addedfile", function (file) {
                     console.log("File added to queue:", file);
                     });
@@ -57,16 +57,12 @@
                         return;
                     }
                     var description = document.querySelector("#description").value.trim();
-                    if (!description) {
-                        alert("Please enter a description before uploading!");
-                        return;
-                    }
-                    
+
                     myDropzone.on("sending", function (file, xhr, formData) {
                         formData.append("description", description);
                         formData.append("csrf_token", csrf_token);
                     });
-                    
+
                     myDropzone.processQueue();
                     });
                 }
